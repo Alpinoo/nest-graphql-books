@@ -1,5 +1,6 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { Book } from './entitites/book.entity';
+import { CreateBookInput } from './dto/create-book.input';
 @Resolver(() => Book)
 export class BooksResolver {
   private books: Book[] = [
@@ -29,10 +30,8 @@ export class BooksResolver {
   }
 
   @Mutation(() => Book)
-  createBook(
-    @Args('title') title: string,
-    @Args('author') author: string,
-  ): Book {
+  createBook(@Args('createBookInput') createBookInput: CreateBookInput): Book {
+    const { title, author } = createBookInput;
     const lastId =
       this.books.length > 0 ? this.books[this.books.length - 1].id : 0;
 
