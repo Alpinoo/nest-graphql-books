@@ -65,4 +65,17 @@ export class BooksResolver {
 
     return book;
   }
+
+  @Mutation(() => Boolean)
+  deleteBook(@Args('id') id: number): boolean {
+    const bookIndex = this.books.findIndex((book) => book.id === id);
+
+    if (bookIndex === -1) {
+      throw new Error(`Book with id ${id} not found`);
+    }
+
+    this.books.splice(bookIndex, 1);
+
+    return true;
+  }
 }
