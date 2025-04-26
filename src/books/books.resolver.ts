@@ -1,4 +1,4 @@
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation, Int } from '@nestjs/graphql';
 import { Book } from './entitites/book.entity';
 import { CreateBookInput } from './dto/create-book.input';
 import { UpdateBookInput } from './dto/update-book.input';
@@ -28,6 +28,11 @@ export class BooksResolver {
     }
 
     return book;
+  }
+
+  @Query(() => Int)
+  countBooks(): number {
+    return this.books.length;
   }
 
   @Mutation(() => Book)
