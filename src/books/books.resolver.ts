@@ -16,4 +16,15 @@ export class BooksResolver {
   getBooksByAuthor(@Args('author') author: string): Book[] {
     return this.getBooks().filter((b) => b.author === author);
   }
+
+  @Query(() => Book)
+  getBookById(@Args('id') id: number): Book {
+    const book = this.getBooks().find((book) => book.id === id);
+
+    if (!book) {
+      throw new Error('No book with given id');
+    }
+
+    return book;
+  }
 }
