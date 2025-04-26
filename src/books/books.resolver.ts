@@ -1,4 +1,4 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { Book } from './entitites/book.entity';
 @Resolver(() => Book)
 export class BooksResolver {
@@ -24,6 +24,25 @@ export class BooksResolver {
     if (!book) {
       throw new Error('No book with given id');
     }
+
+    return book;
+  }
+
+  @Mutation(() => Book)
+  createBook(
+    @Args('title') title: string,
+    @Args('author') author: string,
+  ): Book {
+    const lastId =
+      this.books.length > 0 ? this.books[this.books.length - 1].id : 0;
+
+    const book: Book = {
+      title,
+      author,
+      id: lastId,
+    };
+
+    this.books.push(book);
 
     return book;
   }
