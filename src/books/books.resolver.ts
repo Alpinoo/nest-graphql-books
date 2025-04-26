@@ -1,6 +1,7 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { Book } from './entitites/book.entity';
 import { CreateBookInput } from './dto/create-book.input';
+import { UpdateBookInput } from './dto/update-book.input';
 @Resolver(() => Book)
 export class BooksResolver {
   private books: Book[] = [
@@ -42,6 +43,25 @@ export class BooksResolver {
     };
 
     this.books.push(book);
+
+    return book;
+  }
+
+  @Mutation(() => Book)
+  updateBook(@Args('updateBookInput') updateBookInput: UpdateBookInput): Book {
+    const { id, title, author } = updateBookInput;
+
+    const book = this.books.find((book) => book.id === id);
+
+    if (!book) {
+      throw new Error(`Book with id ${id} not found`);
+    }
+
+    if (title) {
+      book.title = title;
+    } else if (author) {
+      book.author = author;
+    }
 
     return book;
   }
