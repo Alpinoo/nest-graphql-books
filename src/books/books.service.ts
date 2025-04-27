@@ -7,8 +7,8 @@ import { UpdateBookInput } from './dto/update-book.input';
 @Injectable()
 export class BooksService {
   private books: Book[] = [
-    { id: 1, title: 'Hello There', author: 'Obi Wan Kenobi' },
-    { id: 2, title: 'Somebody To Love', author: 'Freddie' },
+    { id: 1, title: 'Hello There', author: 'Obi Wan Kenobi', authorId: 22 },
+    { id: 2, title: 'Somebody To Love', author: 'Freddie', authorId: 33 },
   ];
 
   @Query(() => [Book])
@@ -47,6 +47,7 @@ export class BooksService {
       title,
       author,
       id: lastId,
+      authorId: lastId + lastId,
     };
 
     this.books.push(book);
