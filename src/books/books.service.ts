@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from './entitites/book.entity';
 import { CreateBookInput } from './dto/create-book.input';
 import { Args, Int, Mutation, Query } from '@nestjs/graphql';
@@ -78,7 +78,7 @@ export class BooksService {
     const book = this.getBooks().find((book) => book.id === id);
 
     if (!book) {
-      throw new Error('No book with given id');
+      throw new NotFoundException('No book with given id');
     }
 
     return book;
