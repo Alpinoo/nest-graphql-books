@@ -7,8 +7,25 @@ import { UpdateBookInput } from './dto/update-book.input';
 @Injectable()
 export class BooksService {
   private books: Book[] = [
-    { id: 1, title: 'Hello There', author: 'Obi Wan Kenobi', authorId: 22 },
-    { id: 2, title: 'Somebody To Love', author: 'Freddie', authorId: 33 },
+    { id: 1, title: 'The Hobbit', author: 'J.R.R. Tolkien', authorId: 11 },
+    {
+      id: 2,
+      title: 'The Lord of the Rings',
+      author: 'J.R.R. Tolkien',
+      authorId: 11,
+    },
+    {
+      id: 3,
+      title: 'A Game of Thrones',
+      author: 'George R.R. Martin',
+      authorId: 22,
+    },
+    {
+      id: 4,
+      title: "Harry Potter and the Philosopher's Stone",
+      author: 'J.K. Rowling',
+      authorId: 33,
+    },
   ];
 
   @Query(() => [Book])
@@ -85,5 +102,9 @@ export class BooksService {
     this.books.splice(bookIndex, 1);
 
     return true;
+  }
+
+  findBooksByAuthorId(authorId: number): Book[] {
+    return this.books.filter((book) => book.authorId === authorId);
   }
 }

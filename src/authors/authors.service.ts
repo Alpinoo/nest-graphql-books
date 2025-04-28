@@ -17,4 +17,8 @@ export class AuthorsService {
 
     return author;
   }
+
+  getAuthors(): Author[] {
+    return this.authors;
+  }
 }
