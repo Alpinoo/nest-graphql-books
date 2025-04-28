@@ -13,18 +13,49 @@ export class BooksService {
       title: 'The Lord of the Rings',
       author: 'J.R.R. Tolkien',
       authorId: 11,
+      categoryId: 101,
     },
     {
       id: 3,
       title: 'A Game of Thrones',
       author: 'George R.R. Martin',
       authorId: 22,
+      categoryId: 103,
     },
     {
       id: 4,
       title: "Harry Potter and the Philosopher's Stone",
       author: 'J.K. Rowling',
       authorId: 33,
+      categoryId: 102,
+    },
+    {
+      id: 5,
+      title: "Harry Potter and the Philosopher's Stone",
+      author: 'J.K. Rowling',
+      authorId: 33,
+      categoryId: 102,
+    },
+    {
+      id: 6,
+      title: 'Harry Potter',
+      author: 'J Rowling',
+      authorId: 33,
+      categoryId: 101,
+    },
+    {
+      id: 7,
+      title: "Philosopher's Stone",
+      author: 'J.K. ',
+      authorId: 33,
+      categoryId: 103,
+    },
+    {
+      id: 8,
+      title: "Harry Potter and the Philosopher's Stone",
+      author: 'J.K. Rowling',
+      authorId: 33,
+      categoryId: 102,
     },
   ];
 
@@ -106,5 +137,9 @@ export class BooksService {
 
   findBooksByAuthorId(authorId: number): Book[] {
     return this.books.filter((book) => book.authorId === authorId);
+  }
+
+  findBooksByCategory(categoryId: number): Book[] {
+    return this.books.filter((book) => book.categoryId === categoryId);
   }
 }

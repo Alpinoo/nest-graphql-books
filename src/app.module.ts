@@ -7,6 +7,8 @@ import { BooksModule } from './books/books.module';
 import { AuthorsService } from './authors/authors.service';
 import { AuthorsResolver } from './authors/authors.resolver';
 import { BooksService } from './books/books.service';
+import { CategoriesModule } from './categories/categories.module';
+import { CategoriesService } from './categories/categories.service';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -14,8 +16,15 @@ import { BooksService } from './books/books.service';
       autoSchemaFile: true,
     }),
     BooksModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AuthorsService, AuthorsResolver, BooksService],
+  providers: [
+    AppService,
+    AuthorsService,
+    AuthorsResolver,
+    BooksService,
+    CategoriesService,
+  ],
 })
 export class AppModule {}
