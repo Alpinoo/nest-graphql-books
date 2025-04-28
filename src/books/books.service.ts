@@ -28,6 +28,7 @@ export class BooksService {
       author: 'J.K. Rowling',
       authorId: 33,
       categoryId: 102,
+      publisherId: 202 
     },
     {
       id: 5,
@@ -35,6 +36,7 @@ export class BooksService {
       author: 'J.K. Rowling',
       authorId: 33,
       categoryId: 102,
+      publisherId: 201
     },
     {
       id: 6,
@@ -49,13 +51,15 @@ export class BooksService {
       author: 'J.K. ',
       authorId: 33,
       categoryId: 103,
+      publisherId: 202 
     },
     {
       id: 8,
-      title: "Harry Potter and the Philosopher's Stone",
+      title: "Harry P",
       author: 'J.K. Rowling',
       authorId: 33,
       categoryId: 102,
+      publisherId: 201
     },
   ];
 
@@ -141,5 +145,8 @@ export class BooksService {
 
   findBooksByCategory(categoryId: number): Book[] {
     return this.books.filter((book) => book.categoryId === categoryId);
+  }
+  findBooksByPublishers(publisherId: number): Book[] {
+    return this.books.filter((book) => book.publisherId === publisherId);
   }
 }

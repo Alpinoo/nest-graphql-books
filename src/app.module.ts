@@ -9,6 +9,7 @@ import { AuthorsResolver } from './authors/authors.resolver';
 import { BooksService } from './books/books.service';
 import { CategoriesModule } from './categories/categories.module';
 import { CategoriesService } from './categories/categories.service';
+import { PublishersModule } from './publishers/publishers.module';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -17,6 +18,7 @@ import { CategoriesService } from './categories/categories.service';
     }),
     BooksModule,
     CategoriesModule,
+    PublishersModule,
   ],
   controllers: [AppController],
   providers: [

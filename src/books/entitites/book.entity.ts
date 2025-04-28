@@ -16,4 +16,7 @@ export class Book {
 
   @Field(() => Int, { nullable: true })
   categoryId?: number;
+
+  @Field(() => Int, {nullable:true})
+  publisherId?: number;
 }
